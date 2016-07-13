@@ -283,8 +283,8 @@ SYSTEM_DLINK *SYSTEM_dlink;
 #define __STRAPNDTL(x, y, n)	SYSTEM_STRAPNDTL(x, y, n)	/* ly := ly + LONG(SHORT(lx)) */
 
 #define __ASH(x, n)	((n)>=0?__ASHL(x,n):__ASHR(x,-(n)))
-#define __ASHL(x, n)	((INTEGER)(x)<<(n))
-#define __ASHR(x, n)	((INTEGER)(x)>>(n))
+#define __ASHL(x, n)	((x)<<(n))
+#define __ASHR(x, n)	((x)>>(n))
 #define __ASHF(x, n)	SYSTEM_ASH(x, n)
 #define __ASHFL(x, n)	SYSTEM_ASHL(x, n)
 #define __DUP(x, l)	x=(void*)memcpy(alloca(l*sizeof(*x)),x,l*sizeof(*x))
