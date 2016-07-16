@@ -1,4 +1,4 @@
-MODULE OfrontCPC;
+MODULE CPfrontCPC;
 (*
 	C source code generator
 	based on OfrontOPC by J. Templ
@@ -7,7 +7,7 @@ MODULE OfrontCPC;
 	todo:
 *)
 
-	IMPORT OPG := OfrontCPG, OPM := DevCPM, OPT := DevCPT;
+	IMPORT OPG := CPfrontCPG, OPM := DevCPM, OPT := DevCPT;
 
 	CONST
 		fullExportList = TRUE;
@@ -56,7 +56,7 @@ MODULE OfrontCPC;
 
 		MaxNameTab = 800000H;
 
-		HeaderMsg = " Ofront 1.2 -";
+		HeaderMsg = " CPfront 1.0 -";
 		BasicIncludeFile = "SYSTEM";
 		Static = "static ";
 		Export = "export ";	(* particularily introduced for VC++ declspec() *)
@@ -2194,4 +2194,4 @@ BEGIN
 	done2 := OPT.NewName("done2");
 	done3 := OPT.NewName("done3");
 	InitKeywords
-END OfrontCPC.
+END CPfrontCPC.

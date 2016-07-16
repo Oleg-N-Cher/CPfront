@@ -1,4 +1,4 @@
-MODULE OfrontCPG;
+MODULE CPfrontCPG;
 (*
 	C source code generator
 	based on OfrontOPM by J. Templ
@@ -256,8 +256,8 @@ suffix does not work in K&R *)
 	PROCEDURE CloseFiles*;
 		VAR FName: Files.Name; res: INTEGER;
 	BEGIN
-		IF DevCPM.noerr THEN DevCPM.LogWStr("    "); DevCPM.LogWNum(R[BodyFile].Pos(), 0); Dialog.ShowStatus("#Ofront:ok")
-		ELSE Dialog.ShowStatus("#Ofront:error")
+		IF DevCPM.noerr THEN DevCPM.LogWStr("    "); DevCPM.LogWNum(R[BodyFile].Pos(), 0); Dialog.ShowStatus("#CPfront:ok")
+		ELSE Dialog.ShowStatus("#CPfront:error")
 		END;
 		IF DevCPM.noerr THEN
 			IF modName = "SYSTEM" THEN
@@ -311,15 +311,15 @@ suffix does not work in K&R *)
 	PROCEDURE GetDefaultOptions;
 		VAR optstr: ARRAY 32 OF CHAR; defopt: SET;
 	BEGIN
-		Dialog.MapString("#Ofront:options", optstr);
+		Dialog.MapString("#CPfront:options", optstr);
 		IF optstr = "options" THEN optstr := "xatp" END ;
 		defopt := {}; ScanOptions(optstr, defopt);
 		options.include0 := include0 IN defopt;
 		options.mainprog := mainprog IN defopt;
-		Dialog.MapString( "#Ofront:directories", options.dirs)
+		Dialog.MapString( "#CPfront:directories", options.dirs)
 	END GetDefaultOptions;
 
 
 BEGIN
 	locate.num := 0; GetDefaultOptions
-END OfrontCPG.
+END CPfrontCPG.

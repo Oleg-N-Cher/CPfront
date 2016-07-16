@@ -1,4 +1,4 @@
-MODULE OfrontCPV;
+MODULE CPfrontCPV;
 (*
 	C source code generator
 	based on OfrontOPV by J. Templ
@@ -7,7 +7,7 @@ MODULE OfrontCPV;
 	todo:
 *)
 
-	IMPORT OPM := DevCPM, OPS := DevCPS, OPT := DevCPT, OPG := OfrontCPG, OPC := OfrontCPC, StdLog;
+	IMPORT OPM := DevCPM, OPS := DevCPS, OPT := DevCPT, OPG := CPfrontCPG, OPC := CPfrontCPC, StdLog;
 	
 	CONST
 		processor* = 1;
@@ -1310,4 +1310,4 @@ MODULE OfrontCPV;
 		OPC.CleanupArrays
 	END Module;
 
-END OfrontCPV.
+END CPfrontCPV.

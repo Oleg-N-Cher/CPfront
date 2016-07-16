@@ -1,4 +1,4 @@
-MODULE OfrontCPBrowser;
+MODULE CPfrontCPBrowser;
 (** OmInc, cas, bh  **)
 
 	(* dg 03.02.99	clientinterface and extensioninterface interfaces *)
@@ -1321,4 +1321,4 @@ MODULE OfrontCPBrowser;
 	
 BEGIN
 	Init
-END OfrontCPBrowser.
+END CPfrontCPBrowser.

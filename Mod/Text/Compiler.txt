@@ -1,11 +1,11 @@
-MODULE OfrontCompiler;
+MODULE CPfrontCompiler;
 
 	IMPORT Kernel,
 		Files, Stores, Sequencers, Models, Views, Dialog, Documents, Controls,
 		TextModels, TextMappers, TextViews, TextControllers, StdLog,
 		StdDialog,
 		DevMarkers, DevCommanders, DevSelectors,
-		DevCPM, DevCPT, DevCPB, DevCPP, DevCPV := OfrontCPV, DevCPG := OfrontCPG;
+		DevCPM, DevCPT, DevCPB, DevCPP, DevCPV := CPfrontCPV, DevCPG := CPfrontCPG;
 
 	CONST
 		(* compiler options: *)
@@ -355,4 +355,4 @@ MODULE OfrontCompiler;
 	
 BEGIN
 	Init
-END OfrontCompiler.
+END CPfrontCompiler.
