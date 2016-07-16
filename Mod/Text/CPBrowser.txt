@@ -79,7 +79,7 @@ MODULE CPfrontCPBrowser;
 			pos: INTEGER
 		END;
 		inp: Files.Reader;
-		imp: ARRAY 256 OF Kernel.Name;
+		imp: ARRAY 256 OF ARRAY 256 OF SHORTCHAR;
 		num, lev, max: INTEGER;
 
 		options*: RECORD
@@ -1180,8 +1180,8 @@ MODULE CPfrontCPBrowser;
 	END RShort;
 
 	PROCEDURE ReadHeader (file: Files.File; VAR view: Views.View; VAR title: Views.Title);
-		VAR ch, ch1: SHORTCHAR; n, i, p, fp, hs, ms, ds, cs, vs, m: INTEGER; name: Kernel.Name; first: BOOLEAN;
-			text: TextModels.Model; v: TextViews.View; fold: StdFolds.Fold; d: Dates.Date; t: Dates.Time;
+		VAR ch, ch1: SHORTCHAR; n, i, p, fp, hs, ms, ds, cs, vs, m: INTEGER; name: ARRAY 256 OF SHORTCHAR;
+			first: BOOLEAN; text: TextModels.Model; v: TextViews.View; fold: StdFolds.Fold; d: Dates.Date; t: Dates.Time;
 			str: ARRAY 64 OF CHAR;
 	BEGIN
 		text := TextModels.dir.New(); global.out.ConnectTo(text);

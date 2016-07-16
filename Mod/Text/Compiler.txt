@@ -198,7 +198,7 @@ MODULE CPfrontCompiler;
 			Do(t, StdLog.text, 0, defopt, error);
 			IF error THEN DevMarkers.ShowFirstError(t, TextViews.focusOnly)
 			ELSE
-				mod := Kernel.ThisLoadedMod(DevCPT.SelfName);
+				mod := Kernel.ThisLoadedMod(LONG(DevCPT.SelfName));
 				IF mod # NIL THEN
 					Kernel.UnloadMod(mod);
 					n := DevCPT.SelfName$;
