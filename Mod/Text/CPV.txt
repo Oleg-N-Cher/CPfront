@@ -863,7 +863,7 @@ MODULE CPfrontCPV;
 								OPG.WriteInt(-r^.conval^.intval)
 							ELSE expr(r, MinPrec)
 							END ;
-							IF subclass IN {lsh, rot} THEN OPG.WriteString(Comma); OPC.Ident(l^.typ^.strobj) END ;
+							IF subclass IN {ash, lsh, rot} THEN OPG.WriteString(Comma); OPC.Ident(l^.typ^.strobj) END ;
 							OPG.Write(CloseParen)
 					| eql .. geq:
 							IF l^.typ^.form IN {String8, String16, Comp} THEN

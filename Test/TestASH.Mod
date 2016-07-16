@@ -1,16 +1,16 @@
 MODULE TestASH;
 
 VAR
-  long: LONGINT;
+  res, longarg: LONGINT;
 
 BEGIN
-  long := ASH(long, 60); (* Translates to:
+  res := ASH(longarg, 60); (* Translates to:
 
-	TestASH_long = __ASHL(TestASH_long, 60);
+	TestASH_res = __ASHL(TestASH_longarg, 60);
 	
 #define __ASHL(x, n)	((INTEGER)(x)<<(n))
 
-Argument TestASH_long casts to INTEGER and high bits are lost!
+Argument TestASH_longarg casts to INTEGER and high bits are lost!
 
 *)
 END TestASH.
