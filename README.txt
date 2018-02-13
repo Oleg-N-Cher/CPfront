@@ -1,3 +1,9 @@
-The directory C in this folder is the prototype of the BlackBox-system level directory (named C as well) to which Ofront will compile. Move or copy it one level up!
+CPfront is an Component Pascal to C translator written in Component Pascal.
 
-The files contained in this prototype will be needed to build an application with the C compiler and linker.
+CPfront was developed by Oberon microsystems AG on the basis of Ofront project (http://www.software-templ.com). CPfront/Docu/Ofront directory contains Ofront version for the time of development. CPfront (Ofront) was shared under the BSD 2-Clause License: https://zx.oberon2.ru/forum/viewtopic.php?f=112&t=284#p1614.
+
+CPfront runs as a subsystem of the BlackBox Component Builder:
+* download and extract BlackBox as zip-archive;
+* move CPfront and C directories to the root of BlackBox;
+* open CPfront/Docu/Quick-Start.odc file for the further instructions.
+
