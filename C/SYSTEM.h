@@ -9,6 +9,7 @@ bh 20.12.1999
 
 */
 
+
 #pragma warning(disable:4101)	// disable "unreferenced variable" warning
 
 // #include <alloca.h>
@@ -28,7 +29,7 @@ typedef wchar_t _CHAR;
 typedef signed char _BYTE;
 typedef short int SHORTINT;
 typedef int INTEGER;
-typedef __int64 LONGINT;
+typedef long long LONGINT;
 typedef float SHORTREAL;
 typedef double REAL;
 typedef unsigned int SET;

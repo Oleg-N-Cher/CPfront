@@ -1,4 +1,4 @@
-#include "system.h"
+#include "SYSTEM.h"
 
 SYSTEM_MODDESC *SYSTEM_modlist;
 SYSTEM_DLINK *SYSTEM_dlink;
