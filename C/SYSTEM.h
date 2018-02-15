@@ -29,7 +29,11 @@ typedef wchar_t _CHAR;
 typedef signed char _BYTE;
 typedef short int SHORTINT;
 typedef int INTEGER;
-typedef long long LONGINT;
+#if !defined(_WIN64) && ((__SIZEOF_POINTER__ == 8) || defined (_LP64) || defined(__LP64__))
+  typedef long LONGINT; // LP64
+#else
+  typedef long long LONGINT; // ILP32 or LLP64
+#endif
 typedef float SHORTREAL;
 typedef double REAL;
 typedef unsigned int SET;
