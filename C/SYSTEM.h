@@ -3,8 +3,8 @@
 
 /*
 
-the ofront runtime system interface and macro library
-based on SYSTEM.h by Sepp Templ
+the CPfront runtime system interface and macro library
+based on SYSTEM.h by Josef Templ
 bh 20.12.1999
 
 */
@@ -53,64 +53,6 @@ INTEGER SYSTEM_INFS;
 
 #define __CALLBACK	WINAPI
 
-typedef struct SYSTEM_MODDESC;
-
-
-/* runtime system routines */
-extern _CHAR* SYSTEM_LSTR(char *x);
-extern INTEGER SYSTEM_DIV(INTEGER x, INTEGER y);
-extern INTEGER SYSTEM_MOD(INTEGER x, INTEGER y);
-extern INTEGER SYSTEM_MIN(INTEGER x, INTEGER y);
-extern INTEGER SYSTEM_MAX(INTEGER x, INTEGER y);
-extern INTEGER SYSTEM_ENTIER(REAL x);
-extern INTEGER SYSTEM_ASH(INTEGER x, INTEGER n);
-extern INTEGER SYSTEM_ABS(INTEGER x);
-extern INTEGER SYSTEM_XCHK(INTEGER i, INTEGER ub);
-extern void *SYSTEM_NEWARR(INTEGER type, INTEGER n);
-extern void *SYSTEM_NEWARR1(INTEGER type, INTEGER n0, INTEGER n);
-extern void *SYSTEM_NEWARR2(INTEGER type, INTEGER n1, INTEGER n0, INTEGER n);
-extern void *SYSTEM_NEWARR3(INTEGER type, INTEGER n2, INTEGER n1, INTEGER n0, INTEGER n);
-extern void *SYSTEM_NEWARR4(INTEGER type, INTEGER n3, INTEGER n2, INTEGER n1, INTEGER n0, INTEGER n);
-extern void SYSTEM_REGMOD(struct SYSTEM_MODDESC *mod);
-extern INTEGER SYSTEM_STRLEN(_CHAR x[]);	/* LEN(lx$) */
-extern INTEGER SYSTEM_STRLENS(SHORTCHAR x[]);	/* LEN(sx$) */
-extern INTEGER SYSTEM_STRCMPSS(SHORTCHAR x[], SHORTCHAR y[]);	/* sx = sy */
-extern INTEGER SYSTEM_STRCMPTS(_CHAR x[], SHORTCHAR y[]);	/* SHORT(lx) = sy */
-extern INTEGER SYSTEM_STRCMPTT(_CHAR x[], _CHAR y[]);	/* SHORT(lx) = SHORT(ly) */
-extern INTEGER SYSTEM_STRCMPLL(_CHAR x[], _CHAR y[]);	/* lx = ly */
-extern INTEGER SYSTEM_STRCMPSL(SHORTCHAR x[], _CHAR y[]);	/* LONG(sx) = ly */
-extern INTEGER SYSTEM_STRCMPTL(_CHAR x[], _CHAR y[]);	/* LONG(SHORT(lx)) = ly */
-extern void SYSTEM_STRCOPYSS(SHORTCHAR x[], SHORTCHAR y[], INTEGER n);	/* sy := sx */
-extern void SYSTEM_STRCOPYTS(_CHAR x[], SHORTCHAR y[], INTEGER n);	/* sy := SHORT(lx) */
-extern void SYSTEM_STRCOPYLL(_CHAR x[], _CHAR y[], INTEGER n);	/* ly := lx */
-extern void SYSTEM_STRCOPYSL(SHORTCHAR x[], _CHAR y[], INTEGER n);	/* ly := LONG(sx) */
-extern void SYSTEM_STRCOPYTL(_CHAR x[], _CHAR y[], INTEGER n);	/* ly := LONG(SHORT(lx)) */
-extern void SYSTEM_STRAPNDSS(SHORTCHAR x[], SHORTCHAR y[], INTEGER n);	/* sy := sy + sx */
-extern void SYSTEM_STRAPNDTS(_CHAR x[], SHORTCHAR y[], INTEGER n);	/* sy := sy + SHORT(lx) */
-extern void SYSTEM_STRAPNDLL(_CHAR x[], _CHAR y[], INTEGER n);	/* ly := ly + lx */
-extern void SYSTEM_STRAPNDSL(SHORTCHAR x[], _CHAR y[], INTEGER n);	/* ly := ly + LONG(sx) */
-extern void SYSTEM_STRAPNDTL(_CHAR x[], _CHAR y[], INTEGER n);	/* ly := ly + LONG(SHORT(lx)) */
-extern LONGINT SYSTEM_DIVL(LONGINT x, LONGINT y);
-extern LONGINT SYSTEM_MODL(LONGINT x, LONGINT y);
-extern LONGINT SYSTEM_MINL(LONGINT x, LONGINT y);
-extern LONGINT SYSTEM_MAXL(LONGINT x, LONGINT y);
-extern LONGINT SYSTEM_ASHL(LONGINT x, INTEGER n);
-extern LONGINT SYSTEM_ABSL(LONGINT x);
-extern SHORTREAL SYSTEM_INT2SR(INTEGER x);
-extern REAL SYSTEM_LONG2R(LONGINT x);
-extern LONGINT SYSTEM_ENTIERL(REAL x);
-extern INTEGER SYSTEM_SR2INT(SHORTREAL x);
-extern LONGINT SYSTEM_R2LONG(REAL x);
-extern SHORTREAL SYSTEM_ABSF(SHORTREAL x);
-extern SHORTREAL SYSTEM_MINF(SHORTREAL x, SHORTREAL y);
-extern SHORTREAL SYSTEM_MAXF(SHORTREAL x, SHORTREAL y);
-extern REAL SYSTEM_ABSD(REAL x);
-extern REAL SYSTEM_MIND(REAL x, REAL y);
-extern REAL SYSTEM_MAXD(REAL x, REAL y);
-
-extern INTEGER Kernel_NewRec();
-extern INTEGER Kernel_NewArr();
-extern void Kernel_Trap();
 
 /* simple open array types */
 
@@ -194,6 +136,63 @@ typedef struct SYSTEM_DLINK {
 	char *name;
 } SYSTEM_DLINK;
 SYSTEM_DLINK *SYSTEM_dlink;
+
+
+/* runtime system routines */
+extern _CHAR* SYSTEM_LSTR(char *x);
+extern INTEGER SYSTEM_DIV(INTEGER x, INTEGER y);
+extern INTEGER SYSTEM_MOD(INTEGER x, INTEGER y);
+extern INTEGER SYSTEM_MIN(INTEGER x, INTEGER y);
+extern INTEGER SYSTEM_MAX(INTEGER x, INTEGER y);
+extern INTEGER SYSTEM_ENTIER(REAL x);
+extern INTEGER SYSTEM_ASH(INTEGER x, INTEGER n);
+extern INTEGER SYSTEM_ABS(INTEGER x);
+extern INTEGER SYSTEM_XCHK(INTEGER i, INTEGER ub);
+extern void *SYSTEM_NEWARR(INTEGER type, INTEGER n);
+extern void *SYSTEM_NEWARR1(INTEGER type, INTEGER n0, INTEGER n);
+extern void *SYSTEM_NEWARR2(INTEGER type, INTEGER n1, INTEGER n0, INTEGER n);
+extern void *SYSTEM_NEWARR3(INTEGER type, INTEGER n2, INTEGER n1, INTEGER n0, INTEGER n);
+extern void *SYSTEM_NEWARR4(INTEGER type, INTEGER n3, INTEGER n2, INTEGER n1, INTEGER n0, INTEGER n);
+extern void SYSTEM_REGMOD(struct SYSTEM_MODDESC *mod);
+extern INTEGER SYSTEM_STRLEN(_CHAR x[]);	/* LEN(lx$) */
+extern INTEGER SYSTEM_STRLENS(SHORTCHAR x[]);	/* LEN(sx$) */
+extern INTEGER SYSTEM_STRCMPSS(SHORTCHAR x[], SHORTCHAR y[]);	/* sx = sy */
+extern INTEGER SYSTEM_STRCMPTS(_CHAR x[], SHORTCHAR y[]);	/* SHORT(lx) = sy */
+extern INTEGER SYSTEM_STRCMPTT(_CHAR x[], _CHAR y[]);	/* SHORT(lx) = SHORT(ly) */
+extern INTEGER SYSTEM_STRCMPLL(_CHAR x[], _CHAR y[]);	/* lx = ly */
+extern INTEGER SYSTEM_STRCMPSL(SHORTCHAR x[], _CHAR y[]);	/* LONG(sx) = ly */
+extern INTEGER SYSTEM_STRCMPTL(_CHAR x[], _CHAR y[]);	/* LONG(SHORT(lx)) = ly */
+extern void SYSTEM_STRCOPYSS(SHORTCHAR x[], SHORTCHAR y[], INTEGER n);	/* sy := sx */
+extern void SYSTEM_STRCOPYTS(_CHAR x[], SHORTCHAR y[], INTEGER n);	/* sy := SHORT(lx) */
+extern void SYSTEM_STRCOPYLL(_CHAR x[], _CHAR y[], INTEGER n);	/* ly := lx */
+extern void SYSTEM_STRCOPYSL(SHORTCHAR x[], _CHAR y[], INTEGER n);	/* ly := LONG(sx) */
+extern void SYSTEM_STRCOPYTL(_CHAR x[], _CHAR y[], INTEGER n);	/* ly := LONG(SHORT(lx)) */
+extern void SYSTEM_STRAPNDSS(SHORTCHAR x[], SHORTCHAR y[], INTEGER n);	/* sy := sy + sx */
+extern void SYSTEM_STRAPNDTS(_CHAR x[], SHORTCHAR y[], INTEGER n);	/* sy := sy + SHORT(lx) */
+extern void SYSTEM_STRAPNDLL(_CHAR x[], _CHAR y[], INTEGER n);	/* ly := ly + lx */
+extern void SYSTEM_STRAPNDSL(SHORTCHAR x[], _CHAR y[], INTEGER n);	/* ly := ly + LONG(sx) */
+extern void SYSTEM_STRAPNDTL(_CHAR x[], _CHAR y[], INTEGER n);	/* ly := ly + LONG(SHORT(lx)) */
+extern LONGINT SYSTEM_DIVL(LONGINT x, LONGINT y);
+extern LONGINT SYSTEM_MODL(LONGINT x, LONGINT y);
+extern LONGINT SYSTEM_MINL(LONGINT x, LONGINT y);
+extern LONGINT SYSTEM_MAXL(LONGINT x, LONGINT y);
+extern LONGINT SYSTEM_ASHL(LONGINT x, INTEGER n);
+extern LONGINT SYSTEM_ABSL(LONGINT x);
+extern SHORTREAL SYSTEM_INT2SR(INTEGER x);
+extern REAL SYSTEM_LONG2R(LONGINT x);
+extern LONGINT SYSTEM_ENTIERL(REAL x);
+extern INTEGER SYSTEM_SR2INT(SHORTREAL x);
+extern LONGINT SYSTEM_R2LONG(REAL x);
+extern SHORTREAL SYSTEM_ABSF(SHORTREAL x);
+extern SHORTREAL SYSTEM_MINF(SHORTREAL x, SHORTREAL y);
+extern SHORTREAL SYSTEM_MAXF(SHORTREAL x, SHORTREAL y);
+extern REAL SYSTEM_ABSD(REAL x);
+extern REAL SYSTEM_MIND(REAL x, REAL y);
+extern REAL SYSTEM_MAXD(REAL x, REAL y);
+
+extern INTEGER Kernel_NewRec();
+extern INTEGER Kernel_NewArr();
+extern void Kernel_Trap();
 
 
 #define __BEGREG(mod)	if (mod.opts & 0x40000) return; mod.opts |= 0x40000;
