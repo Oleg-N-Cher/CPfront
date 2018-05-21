@@ -51,7 +51,20 @@ INTEGER SYSTEM_INFS;
 #define __INF	(*(REAL*)&SYSTEM_INF)
 #define __INFS	(*(SHORTREAL*)&SYSTEM_INFS)
 
-#define __CALLBACK	WINAPI
+#if defined _WIN32 || defined __CYGWIN__
+#  ifdef __GNUC__
+#    define __EXTERN __attribute__((dllimport))
+#  else
+#    define __EXTERN __declspec(dllimport)
+#  endif
+#else
+#  if __GNUC__ >= 4 && !defined(__OS2__)
+#    define __EXTERN __attribute__((visibility("default")))
+#  else
+#    define __EXTERN
+#  endif
+#endif
+#define __CALLBACK __attribute__((__stdcall__))
 
 
 /* simple open array types */
