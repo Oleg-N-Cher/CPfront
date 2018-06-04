@@ -6,7 +6,7 @@ SYSTEM_DLINK *SYSTEM_dlink;
 LONGINT SYSTEM_INF = 0x7FF0000000000000L;
 INTEGER SYSTEM_INFS = 0x7F800000;
 
-_CHAR SYSTEM_strBuf[32][256];
+CHAR SYSTEM_strBuf[32][256];
 INTEGER SYSTEM_actual;
 
 void SYSTEM_REGMOD(SYSTEM_MODDESC *mod)
@@ -69,9 +69,9 @@ INTEGER SYSTEM_XCHK(INTEGER i, INTEGER ub)
 }
 
 
-_CHAR* SYSTEM_LSTR(char *x)
+CHAR* SYSTEM_LSTR(char *x)
 {
-	_CHAR *str = SYSTEM_strBuf[SYSTEM_actual];
+	CHAR *str = SYSTEM_strBuf[SYSTEM_actual];
 	int i = 0;
 	SYSTEM_actual = (SYSTEM_actual + 1) & 0x1F;
 	do {
@@ -257,7 +257,7 @@ LONGINT SYSTEM_R2LONG(REAL x)
 
 
 
-INTEGER SYSTEM_STRLEN(_CHAR x[])	/* LEN(lx$) */
+INTEGER SYSTEM_STRLEN(CHAR x[])	/* LEN(lx$) */
 {
 	int i = 0;
 	while (x[i] != 0) i++;
@@ -278,35 +278,35 @@ INTEGER SYSTEM_STRCMPSS(SHORTCHAR x[], SHORTCHAR y[])	/* sx = sy */
 	return x[i] - y[i];
 }
 
-INTEGER SYSTEM_STRCMPTS(_CHAR x[], SHORTCHAR y[])	/* SHORT(lx) = sy */
+INTEGER SYSTEM_STRCMPTS(CHAR x[], SHORTCHAR y[])	/* SHORT(lx) = sy */
 {
 	int i = 0;
 	while ((x[i] & 0xff) == y[i] && y[i] != 0) i++;
 	return (x[i] & 0xff) - y[i];
 }
 
-INTEGER SYSTEM_STRCMPTT(_CHAR x[], _CHAR y[])	/* SHORT(lx) = SHORT(ly) */
+INTEGER SYSTEM_STRCMPTT(CHAR x[], CHAR y[])	/* SHORT(lx) = SHORT(ly) */
 {
 	int i = 0;
 	while ((x[i] & 0xff) == (y[i] & 0xff) && (y[i] & 0xff) != 0) i++;
 	return (x[i] & 0xff) - (y[i] & 0xff);
 }
 
-INTEGER SYSTEM_STRCMPLL(_CHAR x[], _CHAR y[])	/* lx = ly */
+INTEGER SYSTEM_STRCMPLL(CHAR x[], CHAR y[])	/* lx = ly */
 {
 	int i = 0;
 	while (x[i] == y[i] && y[i] != 0) i++;
 	return x[i] - y[i];
 }
 
-INTEGER SYSTEM_STRCMPSL(SHORTCHAR x[], _CHAR y[])	/* LONG(sx) = ly */
+INTEGER SYSTEM_STRCMPSL(SHORTCHAR x[], CHAR y[])	/* LONG(sx) = ly */
 {
 	int i = 0;
 	while (x[i] == y[i] && y[i] != 0) i++;
 	return x[i] - y[i];
 }
 
-INTEGER SYSTEM_STRCMPTL(_CHAR x[], _CHAR y[])	/* LONG(SHORT(lx)) = ly */
+INTEGER SYSTEM_STRCMPTL(CHAR x[], CHAR y[])	/* LONG(SHORT(lx)) = ly */
 {
 	int i = 0;
 	while ((x[i] & 0xff) == y[i] && y[i] != 0) i++;
@@ -322,7 +322,7 @@ void SYSTEM_STRCOPYSS(SHORTCHAR x[], SHORTCHAR y[], INTEGER n)	/* sy := sx */
 	} while (x[i++] != 0);
 }
 
-void SYSTEM_STRCOPYTS(_CHAR x[], SHORTCHAR y[], INTEGER n)	/* sy := SHORT(lx) */
+void SYSTEM_STRCOPYTS(CHAR x[], SHORTCHAR y[], INTEGER n)	/* sy := SHORT(lx) */
 {
 	int i = 0;
 	do {
@@ -331,7 +331,7 @@ void SYSTEM_STRCOPYTS(_CHAR x[], SHORTCHAR y[], INTEGER n)	/* sy := SHORT(lx) */
 	} while ((x[i++] & 0xff) != 0);
 }
 
-void SYSTEM_STRCOPYLL(_CHAR x[], _CHAR y[], INTEGER n)	/* ly := lx */
+void SYSTEM_STRCOPYLL(CHAR x[], CHAR y[], INTEGER n)	/* ly := lx */
 {
 	int i = 0;
 	do {
@@ -340,7 +340,7 @@ void SYSTEM_STRCOPYLL(_CHAR x[], _CHAR y[], INTEGER n)	/* ly := lx */
 	} while (x[i++] != 0);
 }
 
-void SYSTEM_STRCOPYSL(SHORTCHAR x[], _CHAR y[], INTEGER n)	/* ly := LONG(sx) */
+void SYSTEM_STRCOPYSL(SHORTCHAR x[], CHAR y[], INTEGER n)	/* ly := LONG(sx) */
 {
 	int i = 0;
 	do {
@@ -349,7 +349,7 @@ void SYSTEM_STRCOPYSL(SHORTCHAR x[], _CHAR y[], INTEGER n)	/* ly := LONG(sx) */
 	} while (x[i++] != 0);
 }
 
-void SYSTEM_STRCOPYTL(_CHAR x[], _CHAR y[], INTEGER n)	/* ly := LONG(SHORT(lx)) */
+void SYSTEM_STRCOPYTL(CHAR x[], CHAR y[], INTEGER n)	/* ly := LONG(SHORT(lx)) */
 {
 	int i = 0;
 	do {
@@ -368,7 +368,7 @@ void SYSTEM_STRAPNDSS(SHORTCHAR x[], SHORTCHAR y[], INTEGER n)	/* sy := sy + sx 
 	} while (x[i++] != 0);
 }
 
-void SYSTEM_STRAPNDTS(_CHAR x[], SHORTCHAR y[], INTEGER n)	/* sy := sy + SHORT(lx) */
+void SYSTEM_STRAPNDTS(CHAR x[], SHORTCHAR y[], INTEGER n)	/* sy := sy + SHORT(lx) */
 {
 	int i = 0, j = 0;
 	while (y[j] != 0) j++;
@@ -378,7 +378,7 @@ void SYSTEM_STRAPNDTS(_CHAR x[], SHORTCHAR y[], INTEGER n)	/* sy := sy + SHORT(l
 	} while ((x[i++] & 0xff) != 0);
 }
 
-void SYSTEM_STRAPNDLL(_CHAR x[], _CHAR y[], INTEGER n)	/* ly := ly + lx */
+void SYSTEM_STRAPNDLL(CHAR x[], CHAR y[], INTEGER n)	/* ly := ly + lx */
 {
 	int i = 0, j = 0;
 	while (y[j] != 0) j++;
@@ -388,7 +388,7 @@ void SYSTEM_STRAPNDLL(_CHAR x[], _CHAR y[], INTEGER n)	/* ly := ly + lx */
 	} while (x[i++] != 0);
 }
 
-void SYSTEM_STRAPNDSL(SHORTCHAR x[], _CHAR y[], INTEGER n)	/* ly := ly + LONG(sx) */
+void SYSTEM_STRAPNDSL(SHORTCHAR x[], CHAR y[], INTEGER n)	/* ly := ly + LONG(sx) */
 {
 	int i = 0, j = 0;
 	while (y[j] != 0) j++;
@@ -398,7 +398,7 @@ void SYSTEM_STRAPNDSL(SHORTCHAR x[], _CHAR y[], INTEGER n)	/* ly := ly + LONG(sx
 	} while (x[i++] != 0);
 }
 
-void SYSTEM_STRAPNDTL(_CHAR x[], _CHAR y[], INTEGER n)	/* ly := ly + LONG(SHORT(lx)) */
+void SYSTEM_STRAPNDTL(CHAR x[], CHAR y[], INTEGER n)	/* ly := ly + LONG(SHORT(lx)) */
 {
 	int i = 0, j = 0;
 	while (y[j] != 0) j++;

@@ -23,10 +23,10 @@ bh 20.12.1999
 #define import extern
 
 /* basic types */
-typedef char _BOOLEAN;
+typedef char BOOLEAN;
 typedef unsigned char SHORTCHAR;
-typedef wchar_t _CHAR;
-typedef signed char _BYTE;
+typedef wchar_t CHAR;
+typedef signed char BYTE;
 typedef short int SHORTINT;
 typedef int INTEGER;
 #if !defined(_WIN64) && ((__SIZEOF_POINTER__ == 8) || defined (_LP64) || defined(__LP64__))
@@ -71,11 +71,11 @@ INTEGER SYSTEM_INFS;
 
 typedef struct BOOLEAN_ARRAY {
 	INTEGER gc[3], len[1];
-	_BOOLEAN data[1];
+	BOOLEAN data[1];
 } BOOLEAN_ARRAY;
 typedef struct CHAR_ARRAY {
 	INTEGER gc[3], len[1];
-	_CHAR data[1];
+	CHAR data[1];
 } CHAR_ARRAY;
 typedef struct SHORTCHAR_ARRAY {
 	INTEGER gc[3], len[1];
@@ -83,7 +83,7 @@ typedef struct SHORTCHAR_ARRAY {
 } SHORTCHAR_ARRAY;
 typedef struct BYTE_ARRAY {
 	INTEGER gc[3], len[1];
-	_BYTE data[1];
+	BYTE data[1];
 } BYTE_ARRAY;
 typedef struct SHORTINT_ARRAY {
 	INTEGER gc[3], len[1];
@@ -152,7 +152,7 @@ SYSTEM_DLINK *SYSTEM_dlink;
 
 
 /* runtime system routines */
-extern _CHAR* SYSTEM_LSTR(char *x);
+extern CHAR* SYSTEM_LSTR(char *x);
 extern INTEGER SYSTEM_DIV(INTEGER x, INTEGER y);
 extern INTEGER SYSTEM_MOD(INTEGER x, INTEGER y);
 extern INTEGER SYSTEM_MIN(INTEGER x, INTEGER y);
@@ -167,24 +167,24 @@ extern void *SYSTEM_NEWARR2(INTEGER type, INTEGER n1, INTEGER n0, INTEGER n);
 extern void *SYSTEM_NEWARR3(INTEGER type, INTEGER n2, INTEGER n1, INTEGER n0, INTEGER n);
 extern void *SYSTEM_NEWARR4(INTEGER type, INTEGER n3, INTEGER n2, INTEGER n1, INTEGER n0, INTEGER n);
 extern void SYSTEM_REGMOD(struct SYSTEM_MODDESC *mod);
-extern INTEGER SYSTEM_STRLEN(_CHAR x[]);	/* LEN(lx$) */
+extern INTEGER SYSTEM_STRLEN(CHAR x[]);	/* LEN(lx$) */
 extern INTEGER SYSTEM_STRLENS(SHORTCHAR x[]);	/* LEN(sx$) */
 extern INTEGER SYSTEM_STRCMPSS(SHORTCHAR x[], SHORTCHAR y[]);	/* sx = sy */
-extern INTEGER SYSTEM_STRCMPTS(_CHAR x[], SHORTCHAR y[]);	/* SHORT(lx) = sy */
-extern INTEGER SYSTEM_STRCMPTT(_CHAR x[], _CHAR y[]);	/* SHORT(lx) = SHORT(ly) */
-extern INTEGER SYSTEM_STRCMPLL(_CHAR x[], _CHAR y[]);	/* lx = ly */
-extern INTEGER SYSTEM_STRCMPSL(SHORTCHAR x[], _CHAR y[]);	/* LONG(sx) = ly */
-extern INTEGER SYSTEM_STRCMPTL(_CHAR x[], _CHAR y[]);	/* LONG(SHORT(lx)) = ly */
+extern INTEGER SYSTEM_STRCMPTS(CHAR x[], SHORTCHAR y[]);	/* SHORT(lx) = sy */
+extern INTEGER SYSTEM_STRCMPTT(CHAR x[], CHAR y[]);	/* SHORT(lx) = SHORT(ly) */
+extern INTEGER SYSTEM_STRCMPLL(CHAR x[], CHAR y[]);	/* lx = ly */
+extern INTEGER SYSTEM_STRCMPSL(SHORTCHAR x[], CHAR y[]);	/* LONG(sx) = ly */
+extern INTEGER SYSTEM_STRCMPTL(CHAR x[], CHAR y[]);	/* LONG(SHORT(lx)) = ly */
 extern void SYSTEM_STRCOPYSS(SHORTCHAR x[], SHORTCHAR y[], INTEGER n);	/* sy := sx */
-extern void SYSTEM_STRCOPYTS(_CHAR x[], SHORTCHAR y[], INTEGER n);	/* sy := SHORT(lx) */
-extern void SYSTEM_STRCOPYLL(_CHAR x[], _CHAR y[], INTEGER n);	/* ly := lx */
-extern void SYSTEM_STRCOPYSL(SHORTCHAR x[], _CHAR y[], INTEGER n);	/* ly := LONG(sx) */
-extern void SYSTEM_STRCOPYTL(_CHAR x[], _CHAR y[], INTEGER n);	/* ly := LONG(SHORT(lx)) */
+extern void SYSTEM_STRCOPYTS(CHAR x[], SHORTCHAR y[], INTEGER n);	/* sy := SHORT(lx) */
+extern void SYSTEM_STRCOPYLL(CHAR x[], CHAR y[], INTEGER n);	/* ly := lx */
+extern void SYSTEM_STRCOPYSL(SHORTCHAR x[], CHAR y[], INTEGER n);	/* ly := LONG(sx) */
+extern void SYSTEM_STRCOPYTL(CHAR x[], CHAR y[], INTEGER n);	/* ly := LONG(SHORT(lx)) */
 extern void SYSTEM_STRAPNDSS(SHORTCHAR x[], SHORTCHAR y[], INTEGER n);	/* sy := sy + sx */
-extern void SYSTEM_STRAPNDTS(_CHAR x[], SHORTCHAR y[], INTEGER n);	/* sy := sy + SHORT(lx) */
-extern void SYSTEM_STRAPNDLL(_CHAR x[], _CHAR y[], INTEGER n);	/* ly := ly + lx */
-extern void SYSTEM_STRAPNDSL(SHORTCHAR x[], _CHAR y[], INTEGER n);	/* ly := ly + LONG(sx) */
-extern void SYSTEM_STRAPNDTL(_CHAR x[], _CHAR y[], INTEGER n);	/* ly := ly + LONG(SHORT(lx)) */
+extern void SYSTEM_STRAPNDTS(CHAR x[], SHORTCHAR y[], INTEGER n);	/* sy := sy + SHORT(lx) */
+extern void SYSTEM_STRAPNDLL(CHAR x[], CHAR y[], INTEGER n);	/* ly := ly + lx */
+extern void SYSTEM_STRAPNDSL(SHORTCHAR x[], CHAR y[], INTEGER n);	/* ly := ly + LONG(sx) */
+extern void SYSTEM_STRAPNDTL(CHAR x[], CHAR y[], INTEGER n);	/* ly := ly + LONG(SHORT(lx)) */
 extern LONGINT SYSTEM_DIVL(LONGINT x, LONGINT y);
 extern LONGINT SYSTEM_MODL(LONGINT x, LONGINT y);
 extern LONGINT SYSTEM_MINL(LONGINT x, LONGINT y);
@@ -238,8 +238,8 @@ extern void Kernel_Trap();
 /* std procs and operator mappings */
 // #define __SHORT(x, y)	((int)((unsigned)(x)+(y)<(y)+(y)?(x):(__HALT(-8),0)))
 // #define __SHORTF(x, y)	((int)(__RF((x)+(y),(y)+(y))-(y)))
-// #define __CHR(x)	((_CHAR)__R(x, 256))
-// #define __CHRF(x)	((_CHAR)__RF(x, 256))
+// #define __CHR(x)	((CHAR)__R(x, 256))
+// #define __CHRF(x)	((CHAR)__RF(x, 256))
 #define __DIV(x, y)	((x)>=0?(x)/(y):~(~(x)/(y)))
 #define __DIVF(x, y)	SYSTEM_DIV(x,y)
 #define __DIVFL(x, y)	SYSTEM_DIVL(x,y)
@@ -272,7 +272,7 @@ extern void Kernel_Trap();
 #define __ABSFL(x)	SYSTEM_ABSL(x)
 #define __ABSFF(x)	SYSTEM_ABSF(x)
 #define __ABSFD(x)	SYSTEM_ABSD(x)
-#define __CAP(ch)	((_CHAR)((ch)&0x5f))
+#define __CAP(ch)	((CHAR)((ch)&0x5f))
 #define __ODD(x)	((x)&1)
 #define __IN(x, s)	(((s)>>(x))&1)
 #define __SETOF(x)	((SET)1<<(x))
@@ -337,6 +337,6 @@ extern LONGINT SYSTEM_heapsize;
 extern LONGINT SYSTEM_allocated;
 extern LONGINT SYSTEM_lock;
 extern SHORTINT SYSTEM_gclock;
-extern _BOOLEAN SYSTEM_interrupted;
+extern BOOLEAN SYSTEM_interrupted;
 
 #endif
