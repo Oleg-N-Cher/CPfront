@@ -25,18 +25,26 @@ bh 20.12.1999
 /* basic types */
 typedef char BOOLEAN;
 typedef unsigned char SHORTCHAR;
+typedef unsigned char __U_SHORTCHAR;
 typedef wchar_t CHAR;
+typedef wchar_t __U_CHAR;
 typedef signed char BYTE;
+typedef unsigned char __U_BYTE;
 typedef short int SHORTINT;
+typedef unsigned short int __U_SHORTINT;
 typedef int INTEGER;
+typedef unsigned int __U_INTEGER;
 #if !defined(_WIN64) && ((__SIZEOF_POINTER__ == 8) || defined (_LP64) || defined(__LP64__))
   typedef long LONGINT; // LP64
+  typedef unsigned long __U_LONGINT;
 #else
   typedef long long LONGINT; // ILP32 or LLP64
+  typedef unsigned long long __U_LONGINT;
 #endif
 typedef float SHORTREAL;
 typedef double REAL;
 typedef unsigned int SET;
+typedef unsigned int __U_SET;
 typedef void ANYREC;
 typedef void *ANYPTR;
 typedef void *SYSTEM_PTR;
@@ -226,11 +234,11 @@ extern void Kernel_Trap();
 #define __VALL(x)	SYSTEM_R2LONG(x)
 #define __GET(a, x, t)	x= *(t*)(a)
 #define __PUT(a, x, t)	*(t*)(a)=(t)x
-#define __LSHL(x, n, t)	((t)((unsigned)(x)<<(n)))
-#define __LSHR(x, n, t)	((t)((unsigned)(x)>>(n)))
+#define __LSHL(x, n, t)	((t)((__U_##t)(x)<<(n)))
+#define __LSHR(x, n, t)	((t)((__U_##t)(x)>>(n)))
 #define __LSH(x, n, t)	((n)>=0? __LSHL(x, n, t): __LSHR(x, -(n), t))
-#define __ROTL(x, n, t)	((t)((unsigned)(x)<<(n)|(unsigned)(x)>>(8*sizeof(t)-(n))))
-#define __ROTR(x, n, t)	((t)((unsigned)(x)>>(n)|(unsigned)(x)<<(8*sizeof(t)-(n))))
+#define __ROTL(x, n, t)	((t)((__U_##t)(x)<<(n)|(__U_##t)(x)>>(8*sizeof(t)-(n))))
+#define __ROTR(x, n, t)	((t)((__U_##t)(x)>>(n)|(__U_##t)(x)<<(8*sizeof(t)-(n))))
 #define __ROT(x, n, t)	((n)>=0? __ROTL(x, n, t): __ROTR(x, -(n), t))
 #define __BIT(x, n)	(*(unsigned*)(x)>>(n)&1)
 #define __MOVE(s, d, n)	memcpy((char*)(d),(char*)(s),n)
