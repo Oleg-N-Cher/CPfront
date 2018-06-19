@@ -213,7 +213,7 @@ extern REAL SYSTEM_MAXD(REAL x, REAL y);
 
 extern INTEGER Kernel_NewRec();
 extern INTEGER Kernel_NewArr();
-extern void Kernel_Trap();
+extern void Kernel_Trap(INTEGER n);
 
 
 #define __BEGREG(mod)	if (mod.opts & 0x40000) return; mod.opts |= 0x40000;
