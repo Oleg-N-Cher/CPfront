@@ -49,8 +49,8 @@ typedef void ANYREC;
 typedef void *ANYPTR;
 typedef void *SYSTEM_PTR;
 
-LONGINT SYSTEM_INF;
-INTEGER SYSTEM_INFS;
+extern LONGINT SYSTEM_INF;
+extern INTEGER SYSTEM_INFS;
 
 /* constants */
 #define __MAXEXT	15
@@ -156,7 +156,7 @@ typedef struct SYSTEM_DLINK {
 	struct SYSTEM_DLINK *next;
 	char *name;
 } SYSTEM_DLINK;
-SYSTEM_DLINK *SYSTEM_dlink;
+extern SYSTEM_DLINK *SYSTEM_dlink;
 
 
 /* runtime system routines */
@@ -211,8 +211,8 @@ extern REAL SYSTEM_ABSD(REAL x);
 extern REAL SYSTEM_MIND(REAL x, REAL y);
 extern REAL SYSTEM_MAXD(REAL x, REAL y);
 
-extern INTEGER Kernel_NewRec();
-extern INTEGER Kernel_NewArr();
+extern INTEGER Kernel_NewRec(INTEGER typ);
+extern INTEGER Kernel_NewArr(INTEGER eltyp, INTEGER nofelem, INTEGER nofdim);
 extern void Kernel_Trap(INTEGER n);
 
 
