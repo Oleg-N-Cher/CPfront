@@ -139,7 +139,7 @@ typedef struct SYSTEM_MODDESC {
 	INTEGER *ptrs;
 	struct SYSTEM_MODDESC **imports;
 	struct SYSTEM_DIRECTORY *exp;
-	char name[64];
+	char name[256];
 } SYSTEM_MODDESC;
 typedef struct SYSTEM_TYPEDESC {
 	INTEGER size;
