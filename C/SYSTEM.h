@@ -23,17 +23,12 @@ bh 20.12.1999
 #define import extern
 
 /* basic types */
-typedef char BOOLEAN;
+typedef unsigned char BOOLEAN;
 typedef unsigned char SHORTCHAR;
-typedef unsigned char __U_SHORTCHAR;
 typedef wchar_t CHAR;
-typedef wchar_t __U_CHAR;
 typedef signed char BYTE;
-typedef unsigned char __U_BYTE;
-typedef short int SHORTINT;
-typedef unsigned short int __U_SHORTINT;
+typedef short SHORTINT;
 typedef int INTEGER;
-typedef unsigned int __U_INTEGER;
 #if !defined(_WIN64) && ((__SIZEOF_POINTER__ == 8) || defined (_LP64) || defined(__LP64__))
   typedef long LONGINT; // LP64
   typedef unsigned long __U_LONGINT;
@@ -44,10 +39,17 @@ typedef unsigned int __U_INTEGER;
 typedef float SHORTREAL;
 typedef double REAL;
 typedef unsigned int SET;
-typedef unsigned int __U_SET;
 typedef void ANYREC;
 typedef void *ANYPTR;
 typedef void *SYSTEM_PTR;
+
+/* Unsigned variants are for use by shift and rotate macros */
+typedef unsigned char __U_SHORTCHAR;
+typedef wchar_t __U_CHAR;
+typedef unsigned char __U_BYTE;
+typedef unsigned short __U_SHORTINT;
+typedef unsigned int __U_INTEGER;
+typedef unsigned int __U_SET;
 
 extern LONGINT SYSTEM_INF;
 extern INTEGER SYSTEM_INFS;
