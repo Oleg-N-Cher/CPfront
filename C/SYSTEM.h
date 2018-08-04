@@ -14,7 +14,6 @@ bh 20.12.1999
 
 // #include <alloca.h>
 #include <malloc.h>
-#include <stddef.h>
 #include <string.h>
 
 // extern char *memcpy();
@@ -25,7 +24,7 @@ bh 20.12.1999
 /* basic types */
 typedef unsigned char BOOLEAN;
 typedef unsigned char SHORTCHAR;
-typedef wchar_t CHAR;
+typedef unsigned short CHAR;
 typedef signed char BYTE;
 typedef short SHORTINT;
 typedef int INTEGER;
@@ -45,7 +44,7 @@ typedef void *SYSTEM_PTR;
 
 /* Unsigned variants are for use by shift and rotate macros */
 typedef unsigned char __U_SHORTCHAR;
-typedef wchar_t __U_CHAR;
+typedef unsigned short __U_CHAR;
 typedef unsigned char __U_BYTE;
 typedef unsigned short __U_SHORTINT;
 typedef unsigned int __U_INTEGER;
