@@ -13,3 +13,6 @@
 #undef BOOLEAN
 #undef BYTE
 #undef CHAR
+
+typedef void *PtrVoid;
+typedef CHAR *PtrWSTR;
