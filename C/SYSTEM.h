@@ -52,6 +52,8 @@ typedef unsigned int __U_SET;
 
 extern LONGINT SYSTEM_INF;
 extern INTEGER SYSTEM_INFS;
+extern INTEGER SYSTEM_argCount;
+extern void *SYSTEM_argVector;
 
 /* constants */
 #define __MAXEXT	15
@@ -217,6 +219,7 @@ extern INTEGER Kernel_NewArr(INTEGER eltyp, INTEGER nofelem, INTEGER nofdim);
 extern void Kernel_Trap(INTEGER n);
 
 
+#define __INIT(argc, argv)	SYSTEM_argCount = argc; SYSTEM_argVector = *(void**)&argv
 #define __BEGREG(mod)	if (mod.opts & 0x40000) return; mod.opts |= 0x40000;
 #define __ENDREG	
 #define __REGMOD(mod)	SYSTEM_REGMOD(&mod);
